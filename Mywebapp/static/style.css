@@ -1,0 +1,234 @@
+html {
+  font-family: sans-serif;
+  background: #eee;
+  padding: 1rem;
+}
+
+body {
+  max-width: 1500px;
+  margin: 0 auto;
+  background: white;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: serif;
+  color: #377ba8;
+  margin: 1rem 0;
+}
+
+a {
+  color: #377ba8;
+}
+
+hr {
+  border: none;
+  border-top: 1px solid lightgray;
+}
+
+nav {
+  background: lightgray;
+  display: flex;
+  align-items: center;
+  padding: 0 0.5rem;
+}
+
+nav h1 {
+  flex: auto;
+  margin: 0;
+}
+
+nav h1 a {
+  text-decoration: none;
+  padding: 0.25rem 0.5rem;
+}
+
+nav ul  {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+nav ul li a, nav ul li span, header .action {
+  display: block;
+  padding: 0.5rem;
+}
+
+.content {
+  padding: 0 1rem 1rem;
+}
+
+.content > header {
+  border-bottom: 1px solid lightgray;
+  display: flex;
+  align-items: flex-end;
+}
+
+.content > header h1 {
+  flex: auto;
+  margin: 1rem 0 0.25rem 0;
+}
+
+.flash {
+  margin: 1em 0;
+  padding: 1em;
+  background: #cae6f6;
+  border: 1px solid #377ba8;
+}
+
+.post > header {
+  display: flex;
+  align-items: flex-end;
+  font-size: 0.85em;
+}
+
+.post > header > div:first-of-type {
+  flex: auto;
+}
+
+.post > header h1 {
+  font-size: 1.5em;
+  margin-bottom: 0;
+}
+
+.post .about {
+  color: slategray;
+  font-style: italic;
+}
+
+.post .body {
+  white-space: pre-line;
+}
+
+.content:last-child {
+  margin-bottom: 0;
+}
+
+.content form {
+  margin: 1em 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.content label {
+  font-weight: bold;
+  margin-bottom: 0.5em;
+}
+
+.content input, .content textarea {
+  margin-bottom: 1em;
+}
+
+.content textarea {
+  min-height: 12em;
+  resize: vertical;
+}
+
+input.danger {
+  color: #cc2f2e;
+}
+
+input[type=submit] {
+  align-self: start;
+  min-width: 10em;
+}
+table.table2 {
+  border: 1px solid gray;
+}
+table.table2 th, .table2 td {
+  border: 1px solid gray;
+}
+table.table2 th {
+  background-color: #ccf;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
+#flashcard {
+  display: inline-block;
+  margin: 50px auto;
+  text-align: left;
+  width: 600px;
+  padding: 20px;
+  background-color: #f2f2f2;
+  border-radius: 10px;
+  box-shadow: 2px 2px 5px #ccc;
+  perspective: 1000px; /* enables 3D space for children elements */
+  transform-style: preserve-3d; /* preserves 3D during animation */
+  transition: transform 0.8s; /* enables smooth transition */
+
+}
+
+#flashcard.flip {
+  transform: rotateY(180deg); /* rotates the element 180 degrees on the Y axis */
+}
+
+
+#word {
+  font-size: 24px;
+  margin-top: 100px;
+  margin-bottom: 100px;
+  margin-right: 150px;
+  margin-left: 80px;
+  transform: rotateY(0deg); /* sets the initial rotation to 0 degrees */
+  backface-visibility: hidden; /* hides the backface of the element */
+  display: flex;
+  align-items: center;
+  font-size: 20px;
+  background-color: #cae6f6;
+}
+
+
+
+#flashcard-front {
+  font-size: 30px;
+  margin-top: 100px;
+  margin-bottom: 100px;
+  margin-right: 150px;
+  margin-left: 80px;
+  display: flex;
+  align-items: center;
+ }
+
+
+#flashcard-back {
+  font-size: 15px;
+  margin-top: 100px;
+  margin-bottom: 100px;
+  margin-right: 150px;
+  margin-left: 80px;
+  display: flex;
+  align-items: center;
+ 
+}
+
+
+#definition{
+  font-size: 18px;
+  margin-top: 20px;
+  color: green;
+  transform: rotateY(180deg); /* rotates the answer 180 degrees on the Y axis */
+  display:block;
+  background-color: bisque;
+}
+
+
+button {
+  padding: 10px 20px;
+  font-size: 18px;
+  margin: 10px;
+  border-radius: 10px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #3e8e41;
+}

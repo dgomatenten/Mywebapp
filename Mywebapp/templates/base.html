@@ -1,0 +1,143 @@
+<!doctype html>
+<title>{% block title %}{% endblock %} - MyWebApp</title>
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <!-- Latest compiled and minified CSS -->
+  <!-- Bootstrap CSS, JS, and jQuery -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  
+
+</head>
+  	<!-- DOCUMENTATION NAVBAR -->
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+      <!-- TYPICALLY WE HAVE A BRAND LINK -->
+        <a class="navbar-brand"  href="{{ url_for('index') }}">MyWebApp-Blog Post</a>
+
+        <!-- THIS SETS UP THE COLLAPSABLE BUTTON ELEMENT (HAMBURGER) -->
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+   <!-- THEN WE PUT AN UNORDERED LIST INSIDE OF A COLLAPSE DIV -->
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+    <ul class="navbar-nav mr-auto">
+
+    {% if g.user %}
+      <li><span>{{ g.user['username'] }}</span>
+
+        <li class="nav-item active">
+          <a class="nav-link" href="{{ url_for('auth.logout') }}">Log Out</a>
+        </li>
+    
+        <li class="nav-item dropdown">
+        <!-- TOP LEVEL DROPDOWN -->
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
+           Flight</a>
+        </a>
+
+        <!-- ONE DIVISION IN THE DROPDOWN -->
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="{{ url_for('flight.flight_lowprice') }}">All Air lines</a>
+          <a class="dropdown-item" href="{{ url_for('flight.flight_index',airline='Japan Airlines') }}">Japan Airlines</a>
+          <a class="dropdown-item" href="{{ url_for('flight.flight_index',airline='American Airlines') }}">American Airlines</a>
+          <a class="dropdown-item" href="{{ url_for('flight.flight_index',airline='ANA') }}">ANA</a>
+        </div>
+        </li>
+
+        <li class="nav-item dropdown">
+          <!-- TOP LEVEL DROPDOWN -->
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Flashcard</a>
+          
+          <!-- ONE DIVISION IN THE DROPDOWN -->
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+  
+            <a class="dropdown-item" href="{{ url_for('Flashcards.flashcards') }}">Flashcard</a>
+            <a class="dropdown-item" href="{{ url_for('Flashcards.register') }}">Word Registration</a>
+            <a class="dropdown-item" href="{{ url_for('Flashcards.index') }}">Word List</a>
+            <a class="dropdown-item" href="{{ url_for('Flashcards.flcajax') }}">Flascard(ajax)</a>
+          </div>
+        </li>
+        
+        <li class="nav-item dropdown">
+          <!-- TOP LEVEL DROPDOWN -->
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            English Reading</a>
+          
+          <!-- ONE DIVISION IN THE DROPDOWN -->
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="{{ url_for('eng.engindex') }}">content List</a>
+             <a class="dropdown-item" href="{{ url_for('eng.register') }}">Reading registration</a>
+         </div>
+        </li>
+        <li class="nav-item dropdown">
+          <!-- TOP LEVEL DROPDOWN -->
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Data Structure</a>
+          
+          <!-- ONE DIVISION IN THE DROPDOWN -->
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="{{ url_for('Flashcards.flashcards') }}">Stack</a>
+             <a class="dropdown-item" href="{{ url_for('Flashcards.flashcards')  }}">Queue</a>
+             <a class="dropdown-item" href="{{ url_for('Flashcards.flashcards')  }}">Ticket List</a>
+           </div>
+        </li>
+        <li class="nav-item dropdown">
+          <!-- TOP LEVEL DROPDOWN -->
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Algorithm</a>
+          
+          <!-- ONE DIVISION IN THE DROPDOWN -->
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="{{ url_for('Flashcards.flashcards')  }}">Fizzbuzz</a>
+             <a class="dropdown-item" href="{{ url_for('Flashcards.flashcards')  }}">Linear Search</a>
+             <a class="dropdown-item" href="{{ url_for('Flashcards.flashcards')  }}">Palindrome</a>
+             <a class="dropdown-item" href="{{ url_for('Flashcards.flashcards')  }}">Anagram</a>
+             <a class="dropdown-item" href="{{ url_for('Flashcards.flashcards')  }}">Count Character</a>
+             <a class="dropdown-item" href="{{ url_for('Flashcards.flashcards')  }}">Recursion</a>
+             
+           </div>
+        </li>
+ 
+
+    {% else %}
+      <li class="nav-item active">
+        <a class="nav-link" href="{{ url_for('auth.register') }}">Register</a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="{{ url_for('auth.login') }}">Log In</a>
+      </li>
+    {% endif %}
+
+    </ul>
+    <!-- CAN EVEN ADD A SEARCH FORM -->
+    <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+  </div>
+</nav>
+
+<section class="content">
+  <header>
+    {% block header %}{% endblock %}
+  </header>
+  {% for message in get_flashed_messages() %}
+    <div class="flash">{{ message }}</div>
+  {% endfor %}
+  {% block content %}{% endblock %}
+</section>

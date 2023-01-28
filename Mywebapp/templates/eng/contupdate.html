@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{{id}}
+{{content}}
+
+{{title}}
+<div class="register">
+    <form action="/eng" method="post">
+      <input type="hidden" name="id" id="id" value="{{id}}">
+      <label for="word">Word(Read-Only):</label>
+      <input type="text" name="title" id="title" value="{{content.Title}}" readonly >
+      <label for="content">Definition(Editable):</label>
+      <textarea name="content" id="content">{{content.Content}}</textarea>
+      
+      <button type="submit">update</button>
+    </form>
+  </div>
+{% endblock %}

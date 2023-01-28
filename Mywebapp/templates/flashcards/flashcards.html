@@ -1,0 +1,95 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<script>
+    var flashcards = [
+        {% for flashcard in flashcards %}
+            { id: {{ flashcard.id }}, word: "{{ flashcard.word }}", definition: "{{ flashcard.definition }}", JpDef: "{{ flashcard.JpDef }}" },
+        {% endfor %}
+    ];
+    
+    var currentFlashcard = flashcards[0].id;
+    
+    function showWord() {
+        document.getElementById("word").innerHTML = flashcards[currentFlashcard].word;
+        document.getElementById("definition").style.display = "none";
+    }
+
+    function showDefinition() {
+        document.getElementById("definition").innerHTML = flashcards[currentFlashcard].definition + flashcards[currentFlashcard].JpDef;
+        document.getElementById("definition").style.display = "block";
+    }
+
+    function hideDefinition() {
+        document.getElementById("definition").style.display = "none";
+    }
+
+    function nextFlashcard() {
+        currentFlashcard++;
+        if (currentFlashcard >= flashcards.length) {
+            currentFlashcard = 0;
+        }
+        showWord();
+    }
+
+    function prevFlashcard() {
+        currentFlashcard--;
+        if (currentFlashcard < 0) {
+            currentFlashcard = flashcards.length - 1;
+        }
+        showWord();
+    }
+    
+    function deleteFlashcard(){
+        flashcards.splice(currentFlashcard,1);
+        currentFlashcard = 0;
+        showWord();
+        // send ajax request to delete flashcard from db
+    }
+    
+    function flipCard() {
+        var flashcard = document.getElementById("flashcard");
+        var Word = document.getElementById("word");
+        var Definition = document.getElementById("definition");
+        
+        flashcard.classList.toggle("flip");
+        word.classList.toggle("flip");
+        definition.classList.toggle("flip");
+    
+        if (flashcard.dataset.state === "word") {
+            flashcard.dataset.state = "definition";
+            showDefinition();
+        } else {
+            flashcard.dataset.state = "word";
+            hideDefinition();
+        }
+}
+
+</script>
+
+
+<script>
+    $(document).ready(function(){
+        $("button").click(function(){
+            $("#test").hide();
+                }
+            );
+        }   );
+ </script>
+
+<body onload = showWord()>
+<div id="flashcard" onclick="flipCard()" data-state="word">
+    
+        <div id="word" ></div>
+        <div id="definition"></div>
+        <div id = "test">test</div>
+</div>
+<div>
+    <button id = "prev" onclick="prevFlashcard()">Prev</button>
+    <button id = "next" onclick="nextFlashcard()">Next</button>
+     
+</div>
+</body>
+
+    
+{% endblock %}

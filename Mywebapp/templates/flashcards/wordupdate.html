@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{{id}}
+{{flashcard}}
+{{word}}
+
+<div class="register">
+    <form action="/flashcards/{{flashcard.id}}/wordupdate" method="post">
+      <input type="hidden" name="id" id="id" value="{{flashcard.id}}">
+      <label for="word">Word(Read-Only):</label>
+      <input type="text" name="words" id="words" value="{{flashcard.word}}" readonly >
+      <label for="definition">Definition(Editable):</label>
+      <textarea name="definitions" id="definitions">{{flashcard.definition}}</textarea>
+      <label for="JpDef">Japanese Definition(Editable):</label>
+      <textarea name="JpDef" id="JpDef" >{{flashcard.JpDef}}</textarea>
+      <label for="Dict_definition">Dictionary Definition(Editable):</label>
+      <textarea name="Dict_definition" id="Dict_definition" >{{flashcard.Dict_definition}}</textarea>
+      
+      
+      <button type="submit">update</button>
+    </form>
+  </div>
+{% endblock %}

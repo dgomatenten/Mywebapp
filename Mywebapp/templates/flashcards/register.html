@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="register">
+    <form action="/flashcards/register" method="post">
+      <label for="word">Word:</label>
+      <input type="text" name="words" id="words">
+      <label for="definition">Definition:</label>
+      <textarea name="definitions" id="definitions"></textarea>
+      <label for="JpDef">Japanese Definition:</label>
+      <textarea name="JpDef" id="JpDef"></textarea>
+      
+      <button type="submit">Save</button>
+    </form>
+  </div>
+{% endblock %}

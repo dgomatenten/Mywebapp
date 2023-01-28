@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block content %}
+<ul>
+    <li><a href="{{ url_for('flight.flight_lowprice') }}">Flight Low price List</a>
+</ul>
+
+{% if airline  == 'Japan Airlines' %}
+  <img src = "./static/jal_flight_price.png">
+{% elif airline  == 'American Airlines' %}
+  <img src = "./static/aa_flight_price.png">
+{% elif airline  == 'ANA' %}
+  <img src = "./static/ana_flight_price.png">  
+{% endif %}
+  <table class="table2">
+<tr><th>depart date</th><th>Agent</th><th>Airline</th><th>predicted pruchase date</th><th>Price</th></tr>
+  {% for post in posts %}
+    <tr><td>{{post['startdate']}}</td><td>{{post['provider_code']}}</td><td>{{post['airline']}}</td>
+      <td>{{post['predict_purchase_date']}}</td>
+      <td>
+        <a href="javascript:window.open('{{post['link']}}','mywindowtitle','width=500,height=150')">{{post['price']}}</a>
+      </td>
+    </tr>
+  {% endfor %}
+</table>  
+{% endblock %}

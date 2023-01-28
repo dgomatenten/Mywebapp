@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Flashcard App</title>
+</head>
+<body>
+    <div id="flashcard">
+        <div id="flashcard-front"></div>
+        <div id="flashcard-back" style="display: none;">
+            <table>
+                <tr><td>Audio</td><td><a id="audio_link" >audio</a></td></div></tr>
+                <tr><td>Definition</td><td><div id = "def"></td></div></tr>
+                <tr><td>Japanese</td><td><div id = "JpDef"></div></td></tr> 
+            </table>
+         </div>
+    </div>
+    <div>
+        <button id="prev-button">Prev</button>
+        <button id="next-button">Next</button> 
+    </div>
+    <script>
+
+    var currentIndex = 0;
+
+    function updateFlashcard() {
+        $.ajax({
+            type: "GET",
+            url: '/flashcards/flcajax',
+            data: {'index': currentIndex},
+            success: function(response) {
+                $("#flashcard-front").text(response.word);
+                $("#def").text(response.definition);
+                $("#JpDef").text(response.JpDef);
+                $("#audio_link").attr("href", response.audio_link);
+
+           
+           
+            },    
+            error: function(jqXHR, textStatus, errorThrown) {
+                $("#flashcard-front").text(errorThrown);   
+            }
+         });
+        }
+        
+    $("#next-button").click(function() {
+        console.log("JS code is running");
+        currentIndex = (currentIndex + 1);
+        updateFlashcard();
+    });
+    
+    $("#prev-button").click(function() {
+        console.log("JS code is running");
+        if (currentIdex = 0){
+            $("#prev-botton").hide
+        }
+        else{
+            currentIndex = (currentIndex - 1);
+        }
+        updateFlashcard();
+    });
+    
+    
+    $("#flashcard").click(function() {
+        $("#flashcard-front").toggle();
+        $("#flashcard-back").toggle();
+    });
+        
+        updateFlashcard();
+    
+    </script>
+
+</body>
+
+    
+{% endblock %}

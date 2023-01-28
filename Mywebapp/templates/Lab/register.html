@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="register">
+    <form action="/lab/register" method="post">
+      <label for="type">type:</label>
+      <input type="text" name="type" id="type">
+      <label for="title">title:</label>
+      <input type="text" name="title" id="title">
+      <label for="content">Contents:</label>
+      <textarea name="content" id="content"></textarea>
+      <button type="submit">Save</button>
+    </form>
+  </div>
+{% endblock %}
